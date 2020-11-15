@@ -24,12 +24,13 @@ Docentes:
 * Docker-compose
 
 # Imagenes Docker necesarias para el proyecto
-
+Se debe ejecutar las siguientes imagenes:
+```
 docker pull harmish/typescript
 docker pull mysql:5.7
 docker pull phpmyadmin/phpmyadmin
 docker pull abassi/nodejs-server:10.0-dev
-
+```
 
 
 Template project for Web Applications Development.
