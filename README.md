@@ -3,17 +3,34 @@
 # Proyecto del curso DAW
 
 Este proyecto permite la siguientes operaciones:
-* Crear nuevos dispositivos a la lista.
-* Editar el estado de activa o desactivado.
+* Crear nuevos dispositivos y agregarlos a la lista.
+* Editar el estado de activado o desactivado.
 * Eliminar dispositivos de la lista.
 
 Todas las opreaciones tiene un efecto en la base de datos Mysql.
 
-Authors:
+# Autores del proyecto
+Autor:
+* Ivan Cruz Flores
+
+Docentes:
 
 * Agustin Bassi
 * Brian Ducca
 * Santiago Germino
+
+# Prerequisitos para el proyecto
+* Docker
+* Docker-compose
+
+# Imagenes Docker necesarias para el proyecto
+
+docker pull harmish/typescript
+docker pull mysql:5.7
+docker pull phpmyadmin/phpmyadmin
+docker pull abassi/nodejs-server:10.0-dev
+
+
 
 Template project for Web Applications Development.
 
