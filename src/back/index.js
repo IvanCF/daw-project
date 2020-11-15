@@ -19,15 +19,105 @@ app.use(express.json());
 // to serve static files
 app.use(express.static('/home/node/app/static/'));
 
+//var datos=require('./datos.json');
+var conexionMysql=require('./mysql-connector');
+
+
+
 //=======[ Main module code ]==================================================
 
-app.get('/devices/', function(req, res, next) {
-    response = "{ 'key1':'value1' }"
-    res.send(JSON.stringify(response)).status(200);
+app.get('/dispositivos/', function(req, res, next) {
+    
+   // console.log(datos);
+   /* response = "{ 'key1':'value1' }"
+    res.send(JSON.stringify(response)).status(200);*/
+
+ //res.json(datos);
+    let SQL='select *from Devices';
+    conexionMysql.query(SQL,function(err,respuesta){
+
+        if(err)
+        {
+            res.send(err).status(400);
+            return;
+        }
+        res.send(respuesta);
+    });
+
+
+
 });
 
+//dispositivos/2 
+app.get('/dispositivos/:id', function(req, res, next) {
+    
+    let SQL='select *from Devices where id=?';
+    conexionMysql.query(SQL,[req.params.id],function(err,respuesta){
+
+        if(err)
+        {
+            res.send(err).status(400);
+            return;
+        }
+        res.send(respuesta);
+    });
+
+
+});
+
+app.post('/dispositivos/', function(req, res, next) {
+ 
+    let SQL='Update Devices set state=? where id=?';
+    conexionMysql.query(SQL,[req.body.state,req.body.id],function(err,respuesta){
+
+        if(err)
+        {
+            res.send(err).status(400);
+            return;
+        }
+        res.send("Se actualizo correctaente: "+JSON.stringify(respuesta)).status(200);
+    });
+
+});
+
+
+
+//dispositivos/2 ... esto cuando se usa un archivo
+/*app.get('/dispositivos/:id', function(req, res, next) {
+    
+    //forma 1: buscar un elemento en JSON
+  let datosFiltrados=datos.filter((itemDeLaLista)=>{
+    return itemDeLaLista.id==req.params.id;
+
+   });
+
+   //forma 2: buscar un elemento en JSON
+  // let datosFiltrados=datos.filter(item=>item.id==req.params.id);
+
+
+ res.json(datosFiltrados);
+
+});*/
+
+//-- para cuando es archivo
+//espero recibir algo del Front {id:1,state:1}
+//devuelvo el dato modificado
+//los datos viene por el body 
+/*
+app.post('/dispositivos/', function(req, res, next) {
+    let datoFiltrado=datos.filter(item=>item.id==req.body.id);
+    if(datoFiltrado.length>0)
+    {
+        datoFiltrado[0].state=req.body.state;
+    }
+
+    res.json(datoFiltrado);
+
+});*/
+
+
 app.listen(PORT, function(req, res) {
-    console.log("NodeJS API running correctly");
+    console.log("NodeJS API running correctly ");
 });
 
 //=======[ End of file ]=======================================================
