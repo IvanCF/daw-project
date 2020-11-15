@@ -58,6 +58,15 @@ docker-compose up
 * Node Js
 * Express Js
 * Mysql
+## Base de datos:
+Para la persitencia de datos se usa:
+
+* Base de datos: smart_home
+* Tabla: Devices
+
+Estructura:
+
+![basedatos](doc/basedatos.png)
 
 ## Operaciones
 Imagen que muestra las operaciones implementadas, cada operación tiene efecto en la base de datos.
