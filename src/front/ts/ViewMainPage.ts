@@ -32,7 +32,7 @@ class ViewMainPage
 
                                 <div>  
                                 <label class="red-text">Eliminar Dispositivo</label> 
-                                <a href="#!" id="del_${dev.id}" ><i class="small material-icons red-text">cancel</i></a>
+                                <a href="#!"><i class="small material-icons red-text" id="del_${dev.id}" >cancel</i></a>
                                 </div>
 
                                 <a href="#!" class="secondary-content">

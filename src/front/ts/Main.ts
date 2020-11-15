@@ -43,6 +43,7 @@ class Main implements EventListenerObject, GETResponseListener, POSTResponseList
 
         //this.myf.configEventLister ("click", "boton", this);
         this.myf.configEventLister ("click", "registrar", this);
+       
 
 
         //this.myf.requestGET ("Devices.txt", this); // este es trabjar con un file de prueba
@@ -66,7 +67,7 @@ class Main implements EventListenerObject, GETResponseListener, POSTResponseList
 
     handleEvent(evt: Event): void
     {
-       // console.log (`se hizo "${evt.type}"`);
+        console.log (`se hizo "${evt.type}"`);
         
         let b:HTMLElement = this.myf.getElementByEvent (evt);
         console.log (b.id);
@@ -92,9 +93,32 @@ class Main implements EventListenerObject, GETResponseListener, POSTResponseList
            
 
         }
-        else
+        else if((b.id).indexOf("del_")==0) //opcion de eliminar
         {
+            console.log("Quiere eliminar: "+b.id);
+            //separamos el id
+            let id=b.id.substring(4,b.id.length);
+            //console.log(id);
+            let data = { "id":id};
+            this.myf.requestPOST("http://localhost:8000/eliminar_dispositivo", data, this); 
 
+        }
+        else if((b.id).indexOf("dev_")==0)
+        {
+            console.log("Quiere editar: "+b.id);
+            //separamos el id
+            let id=b.id.substring(4,b.id.length);
+            console.log(b.id);
+            
+            let state:boolean = this.view.getSwitchStateById (b.id);
+            let estado=0;
+            if(state)
+            {
+                estado=1;
+            }
+            let data = { "id":id, "state":estado };
+            console.log(data);
+            this.myf.requestPOST("http://localhost:8000/editar_dispositivos", data, this); 
         }
 
 
@@ -113,6 +137,9 @@ class Main implements EventListenerObject, GETResponseListener, POSTResponseList
         
     }
 
+
+    
+
     handleGETResponse(status: number, response: string): void
     {
         console.log ("Respuesta del servidor: " + response);
@@ -129,7 +156,8 @@ class Main implements EventListenerObject, GETResponseListener, POSTResponseList
             b.addEventListener ("click", this);
 
             //agregamos el listener a los botones de eliminar
-            
+            let boton_eliminar:HTMLElement = this.myf.getElementById (`del_${d.id}`);
+            boton_eliminar.addEventListener ("click", this);
         }
     }
 

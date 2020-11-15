@@ -65,7 +65,7 @@ app.get('/dispositivos/:id', function(req, res, next) {
 
 });
 
-app.post('/dispositivos/', function(req, res, next) {
+app.post('/editar_dispositivos/', function(req, res, next) {
  
     let SQL='Update Devices set state=? where id=?';
     conexionMysql.query(SQL,[req.body.state,req.body.id],function(err,respuesta){
@@ -90,11 +90,28 @@ app.post('/nuevo_dispositivo/', function(req, res, next) {
             res.send(err).status(400);
             return;
         }
-        res.send("Se registro correctaente: "+JSON.stringify(respuesta)).status(200);
+        res.send("Se registro correctamente: "+JSON.stringify(respuesta)).status(200);
     });
 
     
 });
+
+app.post('/eliminar_dispositivo/', function(req, res, next) {
+ 
+    let SQL='DELETE FROM Devices WHERE id=?';
+    conexionMysql.query(SQL,[req.body.id],function(err,respuesta){
+
+        if(err)
+        {
+            res.send(err).status(400);
+            return;
+        }
+        res.send("Se elimino el registro correctamente: "+JSON.stringify(respuesta)).status(200);
+    });
+
+    
+});
+
 
 
 //dispositivos/2 ... esto cuando se usa un archivo
