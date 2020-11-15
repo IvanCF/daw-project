@@ -71,18 +71,7 @@ class MyFramework
         // envio JSON en body de request (Usar con NODEJS)
         xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
         let respuesta= xhr.send(JSON.stringify(data));
-        
-        //volvemos a cargar los nuevo datos actualizando la web
-        //location.reload();
-        //______________________________
-        // envio Formdata en body de request (Usar con Apache,PythonWS,etc.)
-       /* let formData:FormData = new FormData();
-        for (let key in data) {
-            formData.append(key, data[key]);
-        }
-        
-        xhr.send(formData);*/
-        //______________________________
+       
     }
 
     configEventLister (event:string, id:string, listener:EventListenerObject):void

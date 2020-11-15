@@ -28,11 +28,7 @@ var conexionMysql=require('./mysql-connector');
 
 app.get('/dispositivos/', function(req, res, next) {
     
-   // console.log(datos);
-   /* response = "{ 'key1':'value1' }"
-    res.send(JSON.stringify(response)).status(200);*/
 
- //res.json(datos);
     let SQL='select *from Devices';
     conexionMysql.query(SQL,function(err,respuesta){
 
@@ -112,40 +108,6 @@ app.post('/eliminar_dispositivo/', function(req, res, next) {
     
 });
 
-
-
-//dispositivos/2 ... esto cuando se usa un archivo
-/*app.get('/dispositivos/:id', function(req, res, next) {
-    
-    //forma 1: buscar un elemento en JSON
-  let datosFiltrados=datos.filter((itemDeLaLista)=>{
-    return itemDeLaLista.id==req.params.id;
-
-   });
-
-   //forma 2: buscar un elemento en JSON
-  // let datosFiltrados=datos.filter(item=>item.id==req.params.id);
-
-
- res.json(datosFiltrados);
-
-});*/
-
-//-- para cuando es archivo
-//espero recibir algo del Front {id:1,state:1}
-//devuelvo el dato modificado
-//los datos viene por el body 
-/*
-app.post('/dispositivos/', function(req, res, next) {
-    let datoFiltrado=datos.filter(item=>item.id==req.body.id);
-    if(datoFiltrado.length>0)
-    {
-        datoFiltrado[0].state=req.body.state;
-    }
-
-    res.json(datoFiltrado);
-
-});*/
 
 
 app.listen(PORT, function(req, res) {
