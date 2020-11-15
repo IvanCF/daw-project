@@ -50,6 +50,8 @@ class Main implements EventListenerObject, GETResponseListener, POSTResponseList
         this.myf.requestGET ("http://localhost:8000/dispositivos/", this);
 
         // b.textContent = "Hola Mundo!";
+
+        
       
     }
 
@@ -122,6 +124,16 @@ class Main implements EventListenerObject, GETResponseListener, POSTResponseList
         }
 
 
+        
+        //reiniciciar listado actual - ACTUALIZAR LISTA
+        let lista:HTMLElement = document.getElementById ("devicesList");
+        lista.innerHTML=""; //limpiamos
+        //volvemos a cargar los dispositivos
+        this.myf.requestGET ("http://localhost:8000/dispositivos/", this);
+
+        
+       
+
        /* if (b.id == "boton")
         {
             this.counter ++;
@@ -136,7 +148,6 @@ class Main implements EventListenerObject, GETResponseListener, POSTResponseList
         }*/
         
     }
-
 
     
 

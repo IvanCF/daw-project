@@ -1,6 +1,6 @@
 ![header](doc/header.png)
 
-# DAW Project Template
+# Proyecto del curso DAW
 
 Authors:
 

@@ -73,7 +73,7 @@ class MyFramework
         let respuesta= xhr.send(JSON.stringify(data));
         
         //volvemos a cargar los nuevo datos actualizando la web
-        location.reload();
+        //location.reload();
         //______________________________
         // envio Formdata en body de request (Usar con Apache,PythonWS,etc.)
        /* let formData:FormData = new FormData();
