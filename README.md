@@ -19,6 +19,11 @@ Docentes:
 * Brian Ducca
 * Santiago Germino
 
+## Dashboard Principal
+Vista principal de la aplicación:
+
+![dashboard](doc/dashboard.png)
+
 ## Prerequisitos para el proyecto
 * Docker
 * Docker-compose
@@ -54,6 +59,16 @@ docker-compose up
 * Express Js
 * Mysql
 
+## Operaciones
+Imagen que muestra las operaciones implementadas, cada operación tiene efecto en la base de datos.
+
+![operaciones](doc/operaciones.png)
+
+Operación de agregar un nuevo dispositivo mediante una ventana modal.
+
+![operaciones2](doc/operaciones2.png)
+
+Despues de agregar o realizar alguna acción sobre las opciones del dashboard la lista de dispositivos se actualizará con los nuevos cambios realizados.
 
 ## Licence
 
