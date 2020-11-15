@@ -41,8 +41,9 @@ class Main implements EventListenerObject, GETResponseListener, POSTResponseList
          //let b:HTMLElement = document.getElementById ("boton");
         // b.addEventListener ("click", this);
 
-        this.myf.configEventLister ("click", "boton", this);
-      //  this.myf.configEventLister ("DOMContentLoaded", "modal_eliminar", this);
+        //this.myf.configEventLister ("click", "boton", this);
+        this.myf.configEventLister ("click", "registrar", this);
+
 
         //this.myf.requestGET ("Devices.txt", this); // este es trabjar con un file de prueba
         this.myf.requestGET ("http://localhost:8000/dispositivos/", this);
@@ -69,17 +70,33 @@ class Main implements EventListenerObject, GETResponseListener, POSTResponseList
         
         let b:HTMLElement = this.myf.getElementByEvent (evt);
         console.log (b.id);
-/*
-        if(b.id=="boton")
+
+        if(b.id=="registrar")
         {
-            let modal=new Materialize.Modal();
-            var instances = M.Modal.init(b);
+            let nombre:HTMLInputElement=<HTMLInputElement>document.getElementById("nombre");
+            let descripcion:HTMLInputElement=<HTMLInputElement>document.getElementById("descripcion");
+            let state:HTMLInputElement=<HTMLInputElement>document.getElementById("estado");
+            let type:HTMLSelectElement=<HTMLSelectElement>document.getElementById("tipo");
+            let valor=0;
+            
+            if(state.checked)
+            {
+                valor=1;
+            }
+           
+            let data = { "name":`${nombre.value}`,"description":`${descripcion.value}`,"state":valor, "type":`${type.value}`};
+            console.log(data);
+            this.myf.requestPOST ("http://localhost:8000/nuevo_dispositivo", data, this);    
+            
+            
+           
+
         }
-        else// modal eliminar
+        else
         {
 
         }
-*/
+
 
        /* if (b.id == "boton")
         {
@@ -110,6 +127,9 @@ class Main implements EventListenerObject, GETResponseListener, POSTResponseList
         {
             let b:HTMLElement = this.myf.getElementById (`dev_${d.id}`);
             b.addEventListener ("click", this);
+
+            //agregamos el listener a los botones de eliminar
+            
         }
     }
 

@@ -70,7 +70,10 @@ class MyFramework
 
         // envio JSON en body de request (Usar con NODEJS)
         xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-        xhr.send(JSON.stringify(data));
+        let respuesta= xhr.send(JSON.stringify(data));
+        
+        //volvemos a cargar los nuevo datos actualizando la web
+        location.reload();
         //______________________________
         // envio Formdata en body de request (Usar con Apache,PythonWS,etc.)
        /* let formData:FormData = new FormData();
@@ -88,5 +91,5 @@ class MyFramework
         b.addEventListener (event,listener);
     }
 
-    
+
 }

@@ -80,6 +80,21 @@ app.post('/dispositivos/', function(req, res, next) {
 
 });
 
+app.post('/nuevo_dispositivo/', function(req, res, next) {
+ 
+    let SQL='INSERT INTO Devices(name,description,state,type) VALUES(?,?,?,?)';
+    conexionMysql.query(SQL,[req.body.name,req.body.description,req.body.state,req.body.type],function(err,respuesta){
+
+        if(err)
+        {
+            res.send(err).status(400);
+            return;
+        }
+        res.send("Se registro correctaente: "+JSON.stringify(respuesta)).status(200);
+    });
+
+    
+});
 
 
 //dispositivos/2 ... esto cuando se usa un archivo
