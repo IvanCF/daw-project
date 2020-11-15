@@ -1,6 +1,6 @@
 ![header](doc/header.png)
 
-# Proyecto del curso DAW
+## Proyecto del curso DAW
 
 Este proyecto permite la siguientes operaciones:
 * Crear nuevos dispositivos y agregarlos a la lista.
@@ -9,7 +9,7 @@ Este proyecto permite la siguientes operaciones:
 
 Todas las opreaciones tiene un efecto en la base de datos Mysql.
 
-# Autores del proyecto
+## Autores del proyecto
 Autor:
 * Ivan Cruz Flores
 
@@ -19,12 +19,12 @@ Docentes:
 * Brian Ducca
 * Santiago Germino
 
-# Prerequisitos para el proyecto
+## Prerequisitos para el proyecto
 * Docker
 * Docker-compose
 
-# Imagenes Docker necesarias para el proyecto
-Se debe ejecutar las siguientes imagenes:
+## Imagenes Docker 
+Se debe ejecutar las siguientes imagenes necesarias para el proyecto:
 ```
 docker pull harmish/typescript
 docker pull mysql:5.7
@@ -32,10 +32,28 @@ docker pull phpmyadmin/phpmyadmin
 docker pull abassi/nodejs-server:10.0-dev
 ```
 
+Para conocer mas sobre la estructura interna, se puede revisar la Wiki [this link](https://github.com/ce-iot/daw-project-template/wiki).
 
-Template project for Web Applications Development.
+## Instrucciones de uso
+Para iniciar y levantar la aplicación se debe ejecutar:
+```
+docker-compose up
+```
+## Urls Importantes:
 
-To read all project documentation, please go to its wiki in [this link](https://github.com/ce-iot/daw-project-template/wiki).
+* Sever Local ver la aplicación: http://localhost:8000
+* Server para gestión de Mysql usando PhpMyadmin: http://localhost:8001 
+
+## Tecnologías Frontend:
+* Typescript
+* HTML5
+* Materialize
+
+## Tecnologías Backend:
+* Node Js
+* Express Js
+* Mysql
+
 
 ## Licence
 
