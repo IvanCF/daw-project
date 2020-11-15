@@ -38,15 +38,17 @@ class Main implements EventListenerObject, GETResponseListener, POSTResponseList
 
         // Esto se implementa en MyFramework.configEventListener
         // -----------------------------------------------------
-        // let b:HTMLElement = document.getElementById ("boton");
+         //let b:HTMLElement = document.getElementById ("boton");
         // b.addEventListener ("click", this);
 
         this.myf.configEventLister ("click", "boton", this);
+      //  this.myf.configEventLister ("DOMContentLoaded", "modal_eliminar", this);
 
         //this.myf.requestGET ("Devices.txt", this); // este es trabjar con un file de prueba
         this.myf.requestGET ("http://localhost:8000/dispositivos/", this);
 
         // b.textContent = "Hola Mundo!";
+      
     }
 
     mostrarUsers(users:Array<User>):void
@@ -63,12 +65,23 @@ class Main implements EventListenerObject, GETResponseListener, POSTResponseList
 
     handleEvent(evt: Event): void
     {
-        console.log (`se hizo "${evt.type}"`);
-
+       // console.log (`se hizo "${evt.type}"`);
+        
         let b:HTMLElement = this.myf.getElementByEvent (evt);
-        console.log (b);
+        console.log (b.id);
+/*
+        if(b.id=="boton")
+        {
+            let modal=new Materialize.Modal();
+            var instances = M.Modal.init(b);
+        }
+        else// modal eliminar
+        {
 
-        if (b.id == "boton")
+        }
+*/
+
+       /* if (b.id == "boton")
         {
             this.counter ++;
             b.textContent = `Click ${this.counter}`;
@@ -79,7 +92,8 @@ class Main implements EventListenerObject, GETResponseListener, POSTResponseList
 
             let data = { "id":`${b.id}`, "state":state };
             this.myf.requestPOST ("https://cors-anywhere.herokuapp.com/https://postman-echo.com/post", data, this);
-        }
+        }*/
+        
     }
 
     handleGETResponse(status: number, response: string): void

@@ -29,6 +29,12 @@ class ViewMainPage
                                 <img src="static/images/${image}" alt="" class="circle">
                                 <span class="title">${dev.name}</span>
                                 <p>${dev.description}</p>
+
+                                <div>  
+                                <label class="red-text">Eliminar Dispositivo</label> 
+                                <a href="#!" id="del_${dev.id}" ><i class="small material-icons red-text">cancel</i></a>
+                                </div>
+
                                 <a href="#!" class="secondary-content">
                                     <div class="switch">
                                         <label>
@@ -39,6 +45,7 @@ class ViewMainPage
                                         </label>
                                     </div>
                                 </a>
+                                
                             </li>`;
         }
     }
